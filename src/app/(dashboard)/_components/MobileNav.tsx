@@ -10,6 +10,7 @@ function MobileNav() {
       <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
         <Menu className="m-3" />
       </SheetTrigger>
+      <div />
       <SheetContent side="left" className="p-0 bg-slate-600 border-0 ">
         <Sidebar layout={"mobile"} />
       </SheetContent>
