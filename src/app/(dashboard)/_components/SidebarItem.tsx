@@ -32,7 +32,7 @@ function SidebarItem({
   return (
     <Button
       className={cn(
-        "w-[100%] bg-slate-700 text-white p-6 flex gap-3",
+        "w-full bg-slate-700 text-white p-6 flex gap-3",
         isActive &&
           "bg-gray-200 text-black hover:bg-gray-300 hover:text-black border-r-4 border-sky-600"
       )}

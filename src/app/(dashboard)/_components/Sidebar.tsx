@@ -6,11 +6,12 @@ import SidebarList from "./SidebarList";
 import { cn } from "@/lib/utils";
 // import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-function Sidebar(): React.ReactNode {
+function Sidebar({ layout }: { layout: String }): React.ReactNode {
   return (
     <div
       className={cn(
-        "hidden md:flex flex-col w-60 h-[100%] py-2 bg-slate-700 shadow-lg shadow-slate-700"
+        "hidden md:flex flex-col w-full md:w-60 h-full py-2 bg-slate-700 shadow-lg shadow-slate-700",
+        layout === "mobile" && "flex"
       )}
     >
       <div className={cn("p-6")}>
