@@ -35,12 +35,11 @@ const formSchema = z.object({
 });
 
 function TitleForm({ initialData, courseId }: TitleFormProps) {
+  const [isEditing, setIsEditing] = useState(false);
 
-    const [isEditing, setIsEditing] = useState();
-
-    const function toggleEditing() {
-        setIsEditing((current) => !current);
-    }
+  const toggleEditing = () => {
+    setIsEditing((current) => !current);
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,16 +52,18 @@ function TitleForm({ initialData, courseId }: TitleFormProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/courses", values);
-      router.push(`/publisher/courses/${response.data.id}`);
-      toast.success("Course created");
+      await axios.patch(`/api/courses/${courseId}`, values);
+      console.log("Course updated");
+      toast.success("Course edited");
+      router.refresh();
+      toggleEditing();
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Course Title
         <Button onClick={toggleEditing} variant="ghost">
@@ -75,6 +76,39 @@ function TitleForm({ initialData, courseId }: TitleFormProps) {
           )}
         </Button>
       </div>
+      {!isEditing && <p className="text-sm mt-2">{initialData.title}</p>}
+      {isEditing && (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 mt-4"
+          >
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  {/* <FormLabel>Course title</FormLabel> */}
+                  <FormControl>
+                    <Input
+                      disabled={isSubmitting}
+                      placeholder="eg web development course"
+                      {...field}
+                      className="text-black"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="flex items-center gap-x-2">
+              <Button disabled={!isValid || isSubmitting} type="submit">
+                save
+              </Button>
+            </div>
+          </form>
+        </Form>
+      )}
     </div>
   );
 }
