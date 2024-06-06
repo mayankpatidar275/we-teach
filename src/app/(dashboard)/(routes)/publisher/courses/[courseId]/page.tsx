@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { LayoutDashboard } from "lucide-react";
 import { redirect } from "next/navigation";
 import TitleForm from "./_components/TitleForm";
+import DescriptionForm from "./_components/DescriptionForm";
 
 async function CourseIdPage({ params }: { params: { courseId: string } }) {
   const userId = "1";
@@ -52,6 +53,11 @@ async function CourseIdPage({ params }: { params: { courseId: string } }) {
             <h2 className="text-xl">Customize your course</h2>
           </div>
           <TitleForm initialData={course} courseId={course.id} />
+          <DescriptionForm
+            initialData={{ description: course.description ?? "" }}
+            courseId={course.id}
+          />
+          {/* <DescriptionForm initialData={course} courseId={course.id} /> */}
         </div>
       </div>
     </div>
