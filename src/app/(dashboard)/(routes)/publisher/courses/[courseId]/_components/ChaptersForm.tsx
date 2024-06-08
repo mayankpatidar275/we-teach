@@ -24,6 +24,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import { Chapter, Course } from "@prisma/client";
+import ChaptersList from "./ChaptersList";
 
 interface ChaptersFormProps {
   initialData: Course & { chapters: Chapter[] };
@@ -116,7 +117,12 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
           )}
         >
           {!initialData.chapters.length && "No chapters"}
-          {/* {Todo: add chapters list} */}
+
+          <ChaptersList
+            onEdit={() => {}}
+            onReorder={() => {}}
+            items={initialData.chapters || []}
+          />
         </div>
       )}
       {!isCreating && (
