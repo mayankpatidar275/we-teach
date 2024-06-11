@@ -57,7 +57,7 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
     try {
       await axios.post(`/api/courses/${courseId}/chapters`, values);
       console.log("Chapter created");
-      toast.success("Course created");
+      toast.success("Chapter created");
       toggleCreating();
       router.refresh();
     } catch (error) {
