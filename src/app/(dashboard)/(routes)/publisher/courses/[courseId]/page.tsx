@@ -15,6 +15,8 @@ import CategoryForm from "./_components/CategoryForm";
 import PriceForm from "./_components/PriceForm";
 import AttachmentImageForm from "./_components/AttachmentForm";
 import ChaptersForm from "./_components/ChaptersForm";
+import Banner from "@/components/banner";
+import { Actions } from "./_components/Actions";
 
 async function CourseIdPage({ params }: { params: { courseId: string } }) {
   const userId = "1";
@@ -66,59 +68,77 @@ async function CourseIdPage({ params }: { params: { courseId: string } }) {
 
   const completionText = `(${completedFields}/${totalFields})`;
 
+  const isComplete = requiredFields.every(Boolean);
+
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-y-2">
-          <h1 className="text-2xl font-medium">Course setup</h1>
-          <span className="text-sm">Complete all fielts {completionText}</span>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-        <div>
-          <div className="flex items-center gap-x-2">
-            {/* To do : create an IconBadge cusomizable icon for LayoutDashboard in global component just like button. */}
-            {/* Check: 2:27:57 */}
-            <LayoutDashboard />
-            <h2 className="text-xl">Customize your course</h2>
+    <>
+      {!course.isPublished && (
+        <Banner
+          variant="warning"
+          label="This course is unpublished. It will not be visible in the course"
+        />
+      )}
+      <div className="p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-y-2">
+            <h1 className="text-2xl font-medium">Course setup</h1>
+            <span className="text-sm">
+              Complete all fielts {completionText}
+            </span>
           </div>
-          <TitleForm initialData={course} courseId={course.id} />
-          <DescriptionForm initialData={course} courseId={course.id} />
-          <ImageForm initialData={course} courseId={course.id} />
-          <CategoryForm
-            initialData={course}
-            courseId={course.id}
-            options={categories.map((category) => ({
-              label: category.name,
-              value: category.id,
-            }))}
+
+          <Actions
+            disabled={!isComplete}
+            courseId={params.courseId}
+            isPublished={course.isPublished}
           />
         </div>
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div>
             <div className="flex items-center gap-x-2">
-              <ListChecks />
-              <h2 className="text-xl">Course chapters</h2>
+              {/* To do : create an IconBadge cusomizable icon for LayoutDashboard in global component just like button. */}
+              {/* Check: 2:27:57 */}
+              <LayoutDashboard />
+              <h2 className="text-xl">Customize your course</h2>
             </div>
-            <ChaptersForm initialData={course} courseId={course.id} />
+            <TitleForm initialData={course} courseId={course.id} />
+            <DescriptionForm initialData={course} courseId={course.id} />
+            <ImageForm initialData={course} courseId={course.id} />
+            <CategoryForm
+              initialData={course}
+              courseId={course.id}
+              options={categories.map((category) => ({
+                label: category.name,
+                value: category.id,
+              }))}
+            />
           </div>
-          <div>
-            <div className="flex items-center gap-x-2">
-              <CircleDollarSign />
-              <h2 className="text-xl">Sell your course</h2>
+          <div className="space-y-6">
+            <div>
+              <div className="flex items-center gap-x-2">
+                <ListChecks />
+                <h2 className="text-xl">Course chapters</h2>
+              </div>
+              <ChaptersForm initialData={course} courseId={course.id} />
             </div>
-            <PriceForm initialData={course} courseId={course.id} />
-          </div>
-          <div>
-            <div className="flex items-center gap-x-2">
-              <File />
-              <h2 className="text-xl">Resources and Attachments</h2>
+            <div>
+              <div className="flex items-center gap-x-2">
+                <CircleDollarSign />
+                <h2 className="text-xl">Sell your course</h2>
+              </div>
+              <PriceForm initialData={course} courseId={course.id} />
             </div>
-            <AttachmentImageForm initialData={course} courseId={course.id} />
+            <div>
+              <div className="flex items-center gap-x-2">
+                <File />
+                <h2 className="text-xl">Resources and Attachments</h2>
+              </div>
+              <AttachmentImageForm initialData={course} courseId={course.id} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
