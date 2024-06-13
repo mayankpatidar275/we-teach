@@ -1,9 +1,17 @@
-"use client";
+import { db } from "@/lib/db";
+import Categories from "./_components/Categories";
 
-import React from "react";
-
-function Page() {
-  return <div>this is search page</div>;
+async function SearchPage() {
+  const categories = await db.category.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+  return (
+    <div className="p-6">
+      <Categories items={categories} />
+    </div>
+  );
 }
 
-export default Page;
+export default SearchPage;
