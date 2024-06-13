@@ -5,7 +5,7 @@ import { Input } from "./ui/input";
 import { useState, useEffect } from "react";
 import { useDebounce } from "@/hooks/use-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { qs } from "query-string";
+import qs from "query-string";
 
 const SearchInput = () => {
   const [value, setValue] = useState("");
