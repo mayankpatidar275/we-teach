@@ -9,18 +9,14 @@ interface LayoutProps {
 
 function DashboardLayout({ children }: LayoutProps): React.ReactNode {
   return (
-    <div className={cn("h-full")}>
-      <div
-        className={cn("absolute top-0 h-16 w-full p-2 shadow-md bg-slate-800")}
-      >
+    <div className="h-full">
+      <div className="h-[80px] md:pl-56 fixed inset-y-0 w-full z-50">
         <Navbar />
       </div>
-      <div className={cn("h-full flex")}>
-        <div className={cn("h-full z-10")}>
-          <Sidebar layout={"desktop"} />
-        </div>
-        <main className={cn("md:pl-6 pl-4 pt-20")}>{children}</main>
+      <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50">
+        <Sidebar layout="desktop" />
       </div>
+      <main className="md:pl-56 pt-[80px] h-full">{children}</main>
     </div>
   );
 }

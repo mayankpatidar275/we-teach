@@ -17,7 +17,7 @@ function NavbarRoutes() {
   return (
     <>
       {isSearchPage && (
-        <div className="hidden md:block">
+        <div className="hidden md:block ml-72 text-black">
           <SearchInput />
         </div>
       )}
