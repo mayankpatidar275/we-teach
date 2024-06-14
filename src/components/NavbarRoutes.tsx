@@ -11,7 +11,7 @@ function NavbarRoutes() {
   const pathname = usePathname();
 
   const isPublisher = pathname.startsWith("/publisher");
-  const isPlayer = pathname.startsWith("/course");
+  const isPlayer = pathname.startsWith("/courses");
   const isSearchPage = pathname === "/search";
 
   return (

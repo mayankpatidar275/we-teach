@@ -1,6 +1,5 @@
 import React, { Children } from "react";
 import Sidebar from "./_components/Sidebar";
-import { cn } from "@/lib/utils";
 import Navbar from "./_components/Navbar";
 
 interface LayoutProps {

@@ -1,0 +1,9 @@
+globalThis is a standard built-in object similar to window in the browser but works in all environments, including Node.js.
+
+db.ts:
+
+This setup uses a singleton pattern for the PrismaClient to ensure a single instance is used throughout the application, preventing multiple database connections, which is especially useful during development. The code defines a global variable for Prisma, creates or reuses the PrismaClient instance, and assigns it to the global scope in non-production environments.
+
+
+
+
