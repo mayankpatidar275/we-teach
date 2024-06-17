@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { isPublisher } from "@/lib/publisher";
 import { NextResponse } from "next/server";
 // import { auth } from "@clerk/nextjs";
 
@@ -8,7 +9,8 @@ export async function POST(req: Request) {
     const userId = "1";
     const { title } = await req.json();
 
-    if (!userId) {
+    // In case if someone bypass the frontend and use the api (protecting using isPublisher)
+    if (!userId || !isPublisher(userId)) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 

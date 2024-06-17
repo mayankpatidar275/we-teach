@@ -7,3 +7,8 @@ This setup uses a singleton pattern for the PrismaClient to ensure a single inst
 
 
 If there are so many 400 errors in webhook stripe will reject it so be carefull. route.ts (webhook)
+
+
+
+Just Protecting the creation of the chapter, attachments and courses would be enough.
+Try out and check and verify.

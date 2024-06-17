@@ -6,12 +6,15 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
 import SearchInput from "./SearchInput";
+import { isPublisher } from "@/lib/publisher";
 
 function NavbarRoutes() {
+  const userId = "1";
+
   const pathname = usePathname();
 
-  const isPublisher = pathname.startsWith("/publisher");
-  const isPlayer = pathname.startsWith("/courses");
+  const isPublisherPage = pathname.startsWith("/publisher");
+  const isPlayerPage = pathname.startsWith("/courses");
   const isSearchPage = pathname === "/search";
 
   return (
@@ -22,18 +25,18 @@ function NavbarRoutes() {
         </div>
       )}
       <div className="flex gap-x-2 ml-auto">
-        {isPublisher || isPlayer ? (
+        {isPublisherPage || isPlayerPage ? (
           <Link href={"/"}>
             <Button>
               <LogOut className="h-4 w-4 mr-2" />
               Exit
             </Button>
           </Link>
-        ) : (
+        ) : isPublisher(userId) ? (
           <Link href={"/publisher/courses"}>
             <Button>Publisher mode</Button>
           </Link>
-        )}
+        ) : null}
       </div>
     </>
   );
