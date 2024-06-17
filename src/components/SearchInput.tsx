@@ -2,7 +2,7 @@
 
 import { Search } from "lucide-react";
 import { Input } from "./ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useDebounce } from "@/hooks/use-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
@@ -32,15 +32,17 @@ const SearchInput = () => {
   }, [debouncedValue, router, pathname, currentCategoryId]);
 
   return (
-    <div className="relative">
-      <Search className="h-4 w-4 absolute top-3 left-3 text-slate-600" />
-      <Input
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
-        className="w-full md:w-[300px] pl-9 rounded-full bg-slate-100 focus-visible:ring-slate-200"
-        placeholder="Search for a course"
-      />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="relative">
+        <Search className="h-4 w-4 absolute top-3 left-3 text-slate-600" />
+        <Input
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
+          className="w-full md:w-[300px] pl-9 rounded-full bg-slate-100 focus-visible:ring-slate-200"
+          placeholder="Search for a course"
+        />
+      </div>
+    </Suspense>
   );
 };
 

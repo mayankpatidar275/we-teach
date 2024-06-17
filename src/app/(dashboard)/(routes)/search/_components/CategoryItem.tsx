@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
@@ -35,17 +36,19 @@ const CategoryItem = ({ label, value, icon: Icon }: CategoryItemProps) => {
     router.push(url);
   };
   return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "py-2 px-3 text-sm border border-slate-200 rounded-full flex items-center gap-x-1 hover:border-sky-700 transition",
-        isSelected && "border-sky-700 bg-sky-200/20 text-sky-800"
-      )}
-      type="button"
-    >
-      {Icon && <Icon />}
-      <div className="truncate">{label}</div>
-    </button>
+    <Suspense fallback={<div>Loading...</div>}>
+      <button
+        onClick={onClick}
+        className={cn(
+          "py-2 px-3 text-sm border border-slate-200 rounded-full flex items-center gap-x-1 hover:border-sky-700 transition",
+          isSelected && "border-sky-700 bg-sky-200/20 text-sky-800"
+        )}
+        type="button"
+      >
+        {Icon && <Icon />}
+        <div className="truncate">{label}</div>
+      </button>
+    </Suspense>
   );
 };
 
