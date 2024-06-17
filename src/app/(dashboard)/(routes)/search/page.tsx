@@ -4,6 +4,7 @@ import SearchInput from "@/components/SearchInput";
 import getCourses from "../../../../actions/get-courses";
 import { redirect } from "next/navigation";
 import CoursesList from "@/components/CoursesList";
+import { Suspense } from "react";
 
 interface SearchPageProps {
   searchParams: {
@@ -31,13 +32,15 @@ async function SearchPage({ searchParams }: SearchPageProps) {
   });
   return (
     <>
-      <div className="px-6 pt-6 md:hidden md:mb-0 block">
-        <SearchInput />
-      </div>
-      <div className="p-6 space-y-4">
-        <Categories items={categories} />
-        <CoursesList items={courses} />
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="px-6 pt-6 md:hidden md:mb-0 block">
+          <SearchInput />
+        </div>
+        <div className="p-6 space-y-4">
+          <Categories items={categories} />
+          <CoursesList items={courses} />
+        </div>
+      </Suspense>
     </>
   );
 }
