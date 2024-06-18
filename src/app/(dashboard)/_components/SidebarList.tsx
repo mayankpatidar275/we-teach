@@ -18,7 +18,7 @@ const playerRoutes = [
   },
   {
     icon: Settings2,
-    href: "/games",
+    href: "/funzone",
     label: "FunZone",
   },
 ];
