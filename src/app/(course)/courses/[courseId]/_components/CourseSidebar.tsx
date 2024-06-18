@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { Chapter, Course, UserProgress } from "@prisma/client";
 import { redirect } from "next/navigation";
 import CourseSidebarItem from "./CourseSidebarItem";
-import CoursProgress from "@/components/CoursProgress";
+import CourseProgress from "@/components/CourseProgress";
 
 interface CourseSidebarProps {
   course: Course & {
@@ -27,12 +27,12 @@ const CourseSidebar = async ({ course, progressCount }: CourseSidebarProps) => {
     },
   });
   return (
-    <div className="h-full border-r flex flex-col overflow-y-auto shadow-sm">
+    <div className="h-full flex flex-col overflow-y-auto shadow-sm bg-slate-700">
       <div className="p-8 flex flex-col border-b">
         <h1 className="font-semibold">{course.title}</h1>
         {purchase && (
           <div className="mt-10">
-            <CoursProgress variant="success" value={progressCount} />
+            <CourseProgress variant="default" value={progressCount} />
           </div>
         )}
       </div>

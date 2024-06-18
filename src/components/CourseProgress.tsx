@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Progress } from "./ui/progress";
 
-interface CoursProgressProps {
+interface CourseProgressProps {
   value: number;
   variant?: "default" | "success";
   size?: "default" | "sm";
@@ -17,7 +17,7 @@ const sizeByVariant = {
   sm: "text-xs",
 };
 
-const CoursProgress = ({ value, variant, size }: CoursProgressProps) => {
+const CourseProgress = ({ value, variant, size }: CourseProgressProps) => {
   return (
     <div>
       <Progress className="h-2" value={value} variant={variant} />
@@ -34,4 +34,4 @@ const CoursProgress = ({ value, variant, size }: CoursProgressProps) => {
   );
 };
 
-export default CoursProgress;
+export default CourseProgress;
