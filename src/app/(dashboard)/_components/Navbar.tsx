@@ -4,7 +4,7 @@ import NavbarRoutes from "../../../components/NavbarRoutes";
 
 function Navbar() {
   return (
-    <div className="flex items-center h-full justify-between">
+    <div className="flex items-center h-full p-5 justify-between bg-slate-800 ">
       <MobileNav />
       <NavbarRoutes />
     </div>
