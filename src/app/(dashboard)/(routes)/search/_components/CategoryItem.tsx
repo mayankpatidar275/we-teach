@@ -36,7 +36,11 @@ const CategoryItem = ({ label, value, icon: Icon }: CategoryItemProps) => {
     router.push(url);
   };
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex justify-center align-middle">Loading...</div>
+      }
+    >
       <button
         onClick={onClick}
         className={cn(

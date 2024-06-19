@@ -30,9 +30,15 @@ async function SearchPage({ searchParams }: SearchPageProps) {
     userId,
     ...searchParams,
   });
+
+  console.log("courses: ", courses);
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="flex justify-center align-middle">Loading...</div>
+        }
+      >
         <div className="px-6 pt-6 md:hidden md:mb-0 block">
           <SearchInput />
         </div>
