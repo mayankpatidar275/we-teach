@@ -23,7 +23,7 @@ async function CoursesPage() {
   });
 
   return (
-    <div> 
+    <div className="p-8"> 
         <DataTable columns={columns} data={courses} />
     </div>
   );
