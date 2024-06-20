@@ -1,0 +1,10 @@
+#version: '3'
+
+services:
+  nextjs:
+    image: mkpatidar/weteach
+    build:
+      context: .
+    container_name: weteach
+    ports:
+      - "3000:3000"
