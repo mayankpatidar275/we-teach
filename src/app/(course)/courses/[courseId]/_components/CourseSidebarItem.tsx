@@ -45,12 +45,20 @@ const CourseSidebarItem = ({
         <Icon
           size={22}
           className={cn(
-            "text-slate-500",
+            "text-slate-50",
             isActive && "text-slate-700",
             isCompleted && "text-emerald-700"
           )}
         />
-        {label}
+        <span
+          className={cn(
+            "text-slate-50",
+            isActive && "text-slate-700",
+            isCompleted && "text-emerald-700"
+          )}
+        > 
+          {label}
+        </span>
       </div>
       {/* <div
         className={cn(
