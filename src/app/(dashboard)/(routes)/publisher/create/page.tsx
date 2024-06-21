@@ -54,12 +54,10 @@ function CreateCoursePage() {
   return (
     <div className="flex p-6 justify-center">
       <div>
-        <h1>Name your course </h1>
+        <h2 className="font-bold text-lg">Name your course</h2>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et unde
-          impedit nihil veniam consequuntur itaque, perspiciatis atque. Magnam
-          illo accusantium culpa tempore dolor quibusdam, obcaecati voluptatum
-          est excepturi? Asperiores, ratione?
+          What would you like to name your course ? Don&apos; t worry you can
+          always change this later.
         </p>
         <Form {...form}>
           <form
@@ -81,11 +79,7 @@ function CreateCoursePage() {
                     />
                   </FormControl>
                   <FormDescription>
-                    This is the description of course. Lorem ipsum dolor sit
-                    amet consectetur, adipisicing elit. Est aut, doloribus
-                    exercitationem corporis placeat quibusdam incidunt adipisci
-                    fugit vero odio vitae earum eveniet unde a sint voluptatibus
-                    nobis! Maxime, repellat.
+                    What will you teach in this course?
                   </FormDescription>
                 </FormItem>
               )}

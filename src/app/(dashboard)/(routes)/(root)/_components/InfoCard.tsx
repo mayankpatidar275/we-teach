@@ -15,12 +15,12 @@ const InfoCard = ({
   icon: Icon,
 }: InfoCardProps) => {
   return (
-    <div className="border rounded-md flex items-center gap-x-2 p-3">
+    <div className="rounded-md flex items-center gap-x-3 p-3 bg-slate-700">
       {/* <IconBadge variant={variant} icon={Icon}/> */}
       <Icon />
       <div>
         <p className="font-medium">{label}</p>
-        <p className="text-gray-500 text-sm">
+        <p className="text-slate-300 text-sm">
           {numberOfItems} {numberOfItems === 1 ? "Course" : "Courses"}
         </p>
       </div>

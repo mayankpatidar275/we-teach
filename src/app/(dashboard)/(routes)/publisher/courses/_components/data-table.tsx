@@ -63,7 +63,7 @@ export function DataTable<TData, TValue>({
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm text-black"
+          className="max-w-sm text-slate-400 bg-slate-700 border-none"
         />
         <Link href="/publisher/create">
           <Button>
@@ -75,7 +75,7 @@ export function DataTable<TData, TValue>({
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="hover:bg-slate-700" >
+              <TableRow key={headerGroup.id} className="hover:bg-slate-700">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>

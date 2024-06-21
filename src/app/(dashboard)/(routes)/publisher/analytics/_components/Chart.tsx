@@ -12,18 +12,18 @@ interface ChartProps {
 
 const Chart = ({ data }: ChartProps) => {
   return (
-    <Card className="bg-slate-800 text-slate-50 border-none p-5">
+    <Card className="bg-slate-700 text-slate-50 border-none p-5">
       <ResponsiveContainer width="100%" height={350}>
         <BarChart data={data}>
           <XAxis
             dataKey="name"
-            stroke="#888888"
+            stroke="#ffffff"
             fontSize={12}
             tickLine={false}
             axisLine={false}
           />
           <YAxis
-            stroke="#888888"
+            stroke="#ffffff"
             fontSize={12}
             tickLine={false}
             axisLine={false}
