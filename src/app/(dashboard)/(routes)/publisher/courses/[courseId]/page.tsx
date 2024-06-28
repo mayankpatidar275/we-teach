@@ -17,9 +17,11 @@ import AttachmentImageForm from "./_components/AttachmentForm";
 import ChaptersForm from "./_components/ChaptersForm";
 import Banner from "@/components/banner";
 import { Actions } from "./_components/Actions";
+import { auth } from "@/auth";
 
 async function CourseIdPage({ params }: { params: { courseId: string } }) {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
 
   if (!userId) {
     return redirect("/");

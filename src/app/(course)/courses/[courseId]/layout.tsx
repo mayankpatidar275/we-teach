@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import CourseSidebar from "./_components/CourseSidebar";
 import CourseNavbar from "./_components/CourseNavbar";
+import { auth } from "@/auth";
 
 const CourseLayout = async ({
   children,
@@ -11,7 +12,9 @@ const CourseLayout = async ({
   children: React.ReactNode;
   params: { courseId: string };
 }) => {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
+  // const userId = "1";
   if (!userId) {
     return redirect("/");
   }

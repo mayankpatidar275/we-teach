@@ -8,13 +8,16 @@ import ChapterAccessForm from "./_components/ChapterAccessForm";
 import ChapterVideoForm from "./_components/ChapterVideoForm";
 import { ChapterActions } from "./_components/ChapterActions";
 import Banner from "@/components/banner";
+import { auth } from "@/auth";
 
 const ChapterIdPage = async ({
   params,
 }: {
   params: { courseId: string; chapterId: string };
 }) => {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
+  // const userId = "1";
 
   if (!userId) {
     return redirect("/");

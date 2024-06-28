@@ -5,9 +5,12 @@ import { DataTable } from "./_components/data-table";
 import { columns } from "./_components/columns";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
+import { auth } from "@/auth";
 
 async function CoursesPage() {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
+  // const userId = "1";
 
   if (!userId) {
     return redirect("/");
@@ -23,8 +26,8 @@ async function CoursesPage() {
   });
 
   return (
-    <div className="p-8"> 
-        <DataTable columns={columns} data={courses} />
+    <div className="p-8">
+      <DataTable columns={columns} data={courses} />
     </div>
   );
 }

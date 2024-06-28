@@ -5,6 +5,7 @@ import getCourses from "../../../../actions/get-courses";
 import { redirect } from "next/navigation";
 import CoursesList from "@/components/CoursesList";
 import { Suspense } from "react";
+import { auth } from "@/auth";
 
 interface SearchPageProps {
   searchParams: {
@@ -14,7 +15,9 @@ interface SearchPageProps {
 }
 
 async function SearchPage({ searchParams }: SearchPageProps) {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
+  // const userId = "1";
 
   if (!userId) {
     return redirect("/");

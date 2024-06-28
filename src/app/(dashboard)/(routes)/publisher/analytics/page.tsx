@@ -2,9 +2,12 @@ import { getAnalytics } from "@/actions/get-analytics";
 import { redirect } from "next/navigation";
 import DataCard from "./_components/DataCard";
 import Chart from "./_components/Chart";
+import { auth } from "@/auth";
 
 const AnalyticsPage = async () => {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
+  // const userId = "1";
 
   if (!userId) {
     return redirect("/");

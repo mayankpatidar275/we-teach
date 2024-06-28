@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { isPublisher } from "@/lib/publisher";
 import { NextResponse } from "next/server";
@@ -6,7 +7,10 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     // const {userId} = auth();
-    const userId = "1";
+    // const userId = "1";
+    const session = await auth();
+    const userId = session?.user?.id;
+
     const { title } = await req.json();
 
     // In case if someone bypass the frontend and use the api (protecting using isPublisher)

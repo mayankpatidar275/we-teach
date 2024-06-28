@@ -3,9 +3,12 @@ import CoursesList from "@/components/CoursesList";
 import { CheckCircle, Clock } from "lucide-react";
 import { redirect } from "next/navigation";
 import InfoCard from "./_components/InfoCard";
+import { auth } from "@/auth";
 
 export default async function Dashboard() {
-  const userId = "1";
+  const session = await auth();
+  const userId = session?.user?.id;
+  // const userId = "1";
   if (!userId) {
     return redirect("/");
   }
