@@ -2,7 +2,8 @@ import NextAuth, { CredentialsSignin } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialProvider from "next-auth/providers/credentials";
 import { db } from "./lib/db";
-// import { compare } from "bcrypt"; // causing issues
+// const bcrypt = require("bcrypt");
+import {compare} from "bcrypt"; // causing issues
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -34,8 +35,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new CredentialsSignin("Invailid email or password");
         }
 
-        const bcrypt = require("bcrypt");
-        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        const isPasswordCorrect = await compare(password, user.password);
 
         if (!isPasswordCorrect) {
           throw new CredentialsSignin("Invalid password");
