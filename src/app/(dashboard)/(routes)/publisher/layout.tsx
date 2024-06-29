@@ -13,7 +13,7 @@ const PublisherLayout = async ({ children }: { children: React.ReactNode }) => {
     return redirect("/");
   }
 
-  if (!isPublisher(userMail, userId)) {
+  if (!isPublisher(userId, userMail)) {
     return redirect("/");
   }
   return <>{children}</>;

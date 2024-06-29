@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const { title } = await req.json();
 
     // In case if someone bypass the frontend and use the api (protecting using isPublisher)
-    if (!userId || !isPublisher(userMail, userId)) {
+    if (!userId || !isPublisher(userId, userMail)) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 

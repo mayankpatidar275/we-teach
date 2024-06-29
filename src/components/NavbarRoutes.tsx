@@ -36,7 +36,7 @@ function NavbarRoutes() {
               Exit
             </Button>
           </Link>
-        ) : isPublisher(userMail, userId) ? (
+        ) : isPublisher(userId, userMail) ? (
           <Link href={"/publisher/courses"}>
             <Button>Publisher mode</Button>
           </Link>
