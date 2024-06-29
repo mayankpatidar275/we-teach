@@ -27,7 +27,7 @@ const SignupForm = () => {
         }
 
         toast.success("SignUp Successfull", { id: toastId });
-        redirect("/login");
+        redirect("/sign-in");
       }}
     >
       <div className="grid w-full items-center gap-4">
