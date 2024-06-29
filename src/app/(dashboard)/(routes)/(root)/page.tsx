@@ -8,9 +8,12 @@ import { auth } from "@/auth";
 export default async function Dashboard() {
   const session = await auth();
   const userId = session?.user?.id;
-  // const userId = "1";
+
   if (!userId) {
-    return redirect("/sign-in");
+    // console.log("session is: ", session);
+    // console.log("userId is: ", userId);
+    // return redirect("/sign-in");
+    return redirect("/funzone");
   }
 
   const { completedCourses, coursesInProgress } = await getDashboardCourses(

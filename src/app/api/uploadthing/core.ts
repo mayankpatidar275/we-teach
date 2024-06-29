@@ -19,8 +19,9 @@ async function handleAuth({ req, res }: any) {
   // To protect our backend
   // const userId = "1";
   const userId = user?.id;
+  const userMail = user?.email;
 
-  const isAuthorized = isPublisher(userId);
+  const isAuthorized = isPublisher(userMail, userId);
 
   // If you throw, the user will not be able to upload
   if (!user || !isAuthorized) throw new UploadThingError("Unauthorized");

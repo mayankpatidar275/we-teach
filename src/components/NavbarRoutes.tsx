@@ -7,15 +7,19 @@ import Link from "next/link";
 import { LogOut } from "lucide-react";
 import SearchInput from "./SearchInput";
 import { isPublisher } from "@/lib/publisher";
+import { useSession } from "next-auth/react";
 
 function NavbarRoutes() {
-  const userId = "1";
+  // const userId = "1";
+  const session = useSession();
+  const userId = session?.data?.user?.id;
+  const userMail = session?.data?.user?.email;
 
   const pathname = usePathname();
 
-  const isPublisherPage = pathname.startsWith("/publisher");
-  const isPlayerPage = pathname.startsWith("/courses");
-  const isSearchPage = pathname === "/search";
+  const isPublisherPage = pathname.startsWith("/publisher"); // publisher is already protected
+  const isPlayerPage = pathname.startsWith("/courses"); // courses layout is already protected
+  const isSearchPage = pathname === "/search"; // search page already protected
 
   return (
     <>
@@ -32,7 +36,7 @@ function NavbarRoutes() {
               Exit
             </Button>
           </Link>
-        ) : isPublisher(userId) ? (
+        ) : isPublisher(userMail, userId) ? (
           <Link href={"/publisher/courses"}>
             <Button>Publisher mode</Button>
           </Link>

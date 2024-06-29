@@ -9,6 +9,10 @@ const PublisherLayout = async ({ children }: { children: React.ReactNode }) => {
   const userId = session?.user?.id;
   const userMail = session?.user?.email;
 
+  if (!session) {
+    return redirect("/");
+  }
+
   if (!isPublisher(userMail, userId)) {
     return redirect("/");
   }

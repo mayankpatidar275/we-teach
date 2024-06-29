@@ -10,11 +10,12 @@ export async function POST(req: Request) {
     // const userId = "1";
     const session = await auth();
     const userId = session?.user?.id;
+    const userMail = session?.user?.email;
 
     const { title } = await req.json();
 
     // In case if someone bypass the frontend and use the api (protecting using isPublisher)
-    if (!userId || !isPublisher(userId)) {
+    if (!userId || !isPublisher(userMail, userId)) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 

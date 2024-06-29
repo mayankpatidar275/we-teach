@@ -3,7 +3,17 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialProvider from "next-auth/providers/credentials";
 import { db } from "./lib/db";
 // const bcrypt = require("bcrypt");
-import {compare} from "bcrypt"; // causing issues
+import { compare } from "bcrypt"; // causing issues
+
+interface CustomToken {
+  userId: string;
+  // other fields if needed
+}
+
+interface CustomUser {
+  id: string;
+  // other fields if needed
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -49,6 +59,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: { signIn: "/sign-in" },
   secret: process.env.AUTH_SECRET,
   callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.userId = user.id;
+        // token.username = user.username;
+      }
+      return token;
+    },
+    async session({ token, user, session }) {
+      if (token) {
+        session.user.id = token.userId as string;
+        console.log("typeof token:  ", token);
+      }
+      return session;
+    },
     signIn: async ({ user, account }) => {
       //   if (account?.provider === "google") {
       //     try {

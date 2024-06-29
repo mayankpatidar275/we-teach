@@ -2,8 +2,10 @@
 
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 interface SidebarItemProps {
   icon: LucideIcon;
@@ -16,6 +18,7 @@ function SidebarItem({
   href,
   label,
 }: SidebarItemProps): React.ReactNode {
+  const session = useSession();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -25,7 +28,14 @@ function SidebarItem({
     pathname.startsWith(`${href}/`);
 
   function handleClick() {
-    router.push(href.toString());
+    if (
+      session?.data?.user?.id ||
+      href === "/funzone" ||
+      href === "/sign-in" ||
+      href === "/sign-up"
+    )
+      router.push(href.toString());
+    else toast.error("Please login to continue...");
   }
 
   return (
