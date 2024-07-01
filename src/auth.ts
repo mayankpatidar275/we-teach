@@ -29,30 +29,37 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const email = credentials.email as string | undefined;
-        const password = credentials.password as string | undefined;
+        if (credentials === null) return null; 
+        try {
+          const email = credentials.email as string | undefined;
+          const password = credentials.password as string | undefined;
+          
+          if (!email || !password)
+            throw new Error("Please fill all the fields");
 
-        if (!email || !password)
-          throw new CredentialsSignin("Please fill all the fields");
+          const user = await db.user.findFirst({ where: { email: credentials.email as string } });
 
-        const user = await db.user.findFirst({ where: { email: email } });
+          if (user) {
 
-        if (!user) {
-          throw new CredentialsSignin("Invailid email");
-        }
+              if (!user.password) {
+                throw new Error("Invailid email or password");
+              }
 
-        if (!user.password) {
-          throw new CredentialsSignin("Invailid email or password");
-        }
+              const isMatch = await compare(credentials.password as string, user.password);
 
-        const isPasswordCorrect = await compare(password, user.password);
-
-        if (!isPasswordCorrect) {
-          throw new CredentialsSignin("Invalid password");
-        }
-
-        return { username: user.username, email: user.email, id: user.id }; // better not to send user directly because it has password
-      },
+              if (isMatch) {
+                return { username: user.username, email: user.email, id: user.id }; // better not to send user directly because it has password
+                  // return user;
+              } else {
+                  throw new Error("Email or Password is not correct");
+              }
+          } else {
+              throw new Error("User not found");
+          }
+      } catch (error) {
+          throw new Error("Error authorizing");
+      }
+    },
     }),
   ],
   session: { strategy: "jwt" },

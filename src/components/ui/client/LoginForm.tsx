@@ -1,6 +1,7 @@
 "use client";
 
-import { toast } from "sonner";
+import toast from "react-hot-toast";
+// import { toast } from "sonner";
 import { Button } from "../button";
 import { Input } from "../input";
 import { Label } from "../label";
@@ -18,16 +19,18 @@ const LoginForm = () => {
         if (!email || !password)
           return toast.error("Please provide all fields");
 
-        const toastId = toast.loading("Logging in");
-
-        const error = await credentialsLogin(email, password);
-
-        // if (!error) {
-        toast.success("Login Successfull", { id: toastId });
-        router.refresh();
-        // } else {
-        //   toast.error(String(error), { id: toastId });
-        // }
+        try {
+          const response = await credentialsLogin(email, password);
+          if (!!response.error) {
+            // console.error(response.error);
+            toast.error("Check your credentials");
+            // setError(response.error.message);
+          } else {
+            router.push("/");
+          }
+        } catch (e) {
+          toast.error("Check your credentials");
+        }
       }}
     >
       <div className="grid w-full items-center gap-4">
