@@ -14,7 +14,7 @@ interface AcitivityCardProps {
 
 const ActivityCard = ({ id, title, imageUrl }: AcitivityCardProps) => {
   return (
-    <Link href={`/courses/${id}`}>
+    <Link href={`/funzone/${id}`}>
       <div className="group hover:shadow-sm transition overflow-hidden rounded-lg p-3 h-full bg-slate-700">
         <div className="relative w-full aspect-video rounded-md overflow-hidden">
           <Image fill className="object-cover" alt={title} src={imageUrl} />
