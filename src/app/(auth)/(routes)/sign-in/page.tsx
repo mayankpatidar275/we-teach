@@ -42,7 +42,7 @@ const LoginPage = async () => {
             </Button>
           </form>
 
-          <Link href="/signup">Don&apos;t have an account? Signup</Link>
+          <Link href="/sign-up">Don&apos;t have an account? Signup</Link>
         </CardFooter>
       </Card>
     </div>

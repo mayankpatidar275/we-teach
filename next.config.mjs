@@ -9,7 +9,7 @@ const nextConfig = {
     ],
   },
   experimental: {
-    missingSuspenseWithCSRBailout: false,
+    outputFileTracing: true,
   },
   output: "standalone",
   async headers() {
@@ -21,11 +21,17 @@ const nextConfig = {
             key: "Access-Control-Allow-Origin",
             value: "*", // Allows all origins
           },
+          {
+            key: 'X-Forwarded-Host',
+            value: 'we_teach',
+          },
         ],
       },
     ];
   },
 };
+
+export default nextConfig;
 
 
 // /** @type {import('next').NextConfig} */

@@ -36,7 +36,7 @@ const SignupPage = async () => {
             </Button>
           </form>
 
-          <Link href="/signup">Already have an account? Login</Link>
+          <Link href="/sign-in">Already have an account? Login</Link>
         </CardFooter>
       </Card>
     </div>
