@@ -21,14 +21,17 @@ const LoginForm = () => {
 
         try {
           const response = await credentialsLogin(email, password);
+          console.log("After credentialsLogin");
+          console.log("Login response:", response);
           if (!!response.error) {
-            // console.error(response.error);
+            console.error("response.error is: ", response.error);
             toast.error("Check your credentials");
             // setError(response.error.message);
           } else {
             router.push("/");
           }
         } catch (e) {
+          console.error("Caught error during login:", e);
           toast.error("Check your credentials");
         }
       }}

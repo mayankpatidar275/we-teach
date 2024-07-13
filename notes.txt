@@ -12,3 +12,8 @@ If there are so many 400 errors in webhook stripe will reject it so be carefull.
 
 Just Protecting the creation of the chapter, attachments and courses would be enough.
 Try out and check and verify.
+
+
+
+Bcrypt compare causing the app to crash in docker 
+Migrating to bcryptjs worked

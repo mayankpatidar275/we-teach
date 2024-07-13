@@ -23,7 +23,7 @@ const nextConfig = {
           },
           {
             key: 'X-Forwarded-Host',
-            value: 'we_teach',
+            value: 'localhost', // Should match the value from Nginx
           },
         ],
       },
@@ -32,7 +32,6 @@ const nextConfig = {
 };
 
 export default nextConfig;
-
 
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {

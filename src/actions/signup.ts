@@ -2,7 +2,8 @@
 
 import { db } from "@/lib/db";
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs")
+// const bcrypt = require("bcrypt");
 
 const credentialsSignup = async (
   username: string,
