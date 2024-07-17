@@ -1,6 +1,7 @@
 import Mux from "@mux/mux-node";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { auth } from "@/auth";
 
 export async function PATCH(
   req: Request,
@@ -8,7 +9,9 @@ export async function PATCH(
 ) {
   try {
     // const {userId} = auth();
-    const userId = "1";
+    // const userId = "1";
+    const session = await auth();
+    const userId = session?.user?.id;
     // const { isPublished, ...values } = await req.json();
 
     if (!userId) {

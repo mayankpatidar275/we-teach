@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
@@ -6,7 +7,9 @@ export async function PUT(
   { params }: { params: { courseId: string } }
 ) {
   try { 
-    const userId = "1";
+    // const userId = "1";
+    const session = await auth();
+    const userId = session?.user?.id;
     const { list } = await req.json();
 
     if (!userId) {
