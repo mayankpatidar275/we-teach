@@ -1,11 +1,12 @@
 "use client";
 
-import { toast } from "sonner";
+// import { toast } from "sonner";
 import { Button } from "../button";
 import { Input } from "../input";
 import { Label } from "../label";
 import { redirect } from "next/navigation";
 import { credentialsSignup } from "@/actions/signup";
+import toast from "react-hot-toast";
 
 const SignupForm = () => {
   return (
@@ -23,7 +24,7 @@ const SignupForm = () => {
         try {
           await credentialsSignup(username, email, password);
         } catch (error) {
-          return toast.error(String(error), { id: toastId });
+          return toast.error("Something went wrong", { id: toastId });
         }
 
         toast.success("SignUp Successfull", { id: toastId });

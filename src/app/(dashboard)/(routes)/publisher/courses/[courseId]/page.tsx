@@ -85,7 +85,7 @@ async function CourseIdPage({ params }: { params: { courseId: string } }) {
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium">Course setup</h1>
             <span className="text-sm">
-              Complete all fielts {completionText}
+              Complete all fields {completionText}
             </span>
           </div>
 
