@@ -3,31 +3,35 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 import { auth } from "@/auth";
 import { NextApiRequest, NextApiResponse } from "next";
-// import {auth} from "@clerk/nextjs"
 
 const f = createUploadthing();
 
 const _auth = async (req: any, res: any) => {
   const session = await auth(req, res);
+  console.log("Session:", session); // Log session details
   return session?.user;
-}; // Fake auth function
+};
 
 async function handleAuth({ req, res }: any) {
   // This code runs on your server before upload
   const user = await _auth(req, res);
+  console.log("User:", user); // Log user details
 
-  // To protect our backend
-  // const userId = "1";
-  const userId = user?.id;
-  const userMail = user?.email;
+  if (!user) {
+    console.error("Unauthorized access attempt"); // Log unauthorized access
+    throw new UploadThingError("Unauthorized");
+  }
 
-  const isAuthorized = isPublisher( userId, userMail );
+  const userId = user.id;
+  const userMail = user.email;
+  const isAuthorized = isPublisher(userId, userMail);
 
-  // If you throw, the user will not be able to upload
-  if (!user || !isAuthorized) throw new UploadThingError("Unauthorized");
+  if (!isAuthorized) {
+    console.error("User not authorized:", userId, userMail); // Log unauthorized user details
+    throw new UploadThingError("Unauthorized");
+  }
 
-  // Whatever is returned here is accessible in onUploadComplete as `metadata`
-  return { userId: userId };
+  return { userId };
 }
 
 export const ourFileRouter = {
@@ -35,13 +39,14 @@ export const ourFileRouter = {
     .middleware(async ({ req, res }) => {
       // This code runs on your server before upload
       const user = await _auth(req, res);
-      const userId = user?.id;
+      console.log("User (courseImage):", user); // Log user details for courseImage
 
       // If you throw, the user will not be able to upload
       if (!user) throw new UploadThingError("Unauthorized");
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: userId };
+      const userId = user.id;
+      return { userId };
     })
     .onUploadComplete(() => {}),
   courseAttachment: f(["text", "image", "video", "audio", "pdf"])
