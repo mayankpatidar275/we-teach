@@ -44,7 +44,7 @@ function ImageForm({ initialData, courseId }: ImageFormProps) {
   };
 
   return (
-    <div className="mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="mt-6 bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Course Image
         <Button onClick={toggleEditing} variant="ghost">
@@ -65,7 +65,7 @@ function ImageForm({ initialData, courseId }: ImageFormProps) {
       </div>
       {!isEditing &&
         (!initialData.imageUrl ? (
-          <div className="flex justify-center item-center h-60 rounded-md bg-slate-200">
+          <div className="flex justify-center items-center h-60 rounded-md bg-slate-700">
             <ImageIcon className="h-10 w-10 text-slate-500" />
           </div>
         ) : (

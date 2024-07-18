@@ -86,7 +86,7 @@ function ChaptersForm({ initialData, courseId }: ChaptersFormProps) {
   };
 
   return (
-    <div className="relative mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="relative mt-6 bg-slate-700 rounded-md p-4">
       {isUpdating && (
         <div className="absolute flex justify-center h-full w-full bg-slate-500/20 top-0 right-0 rounded-m items-center">
           <Loader2 className="animate-spin h-6 w-6 text-sky-700" />

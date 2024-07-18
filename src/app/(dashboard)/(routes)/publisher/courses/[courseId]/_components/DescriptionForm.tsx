@@ -66,7 +66,7 @@ function DescriptionForm({ initialData, courseId }: DescriptionFormProps) {
   };
 
   return (
-    <div className="mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="mt-6 bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Course Description
         <Button onClick={toggleEditing} variant="ghost">
@@ -100,7 +100,6 @@ function DescriptionForm({ initialData, courseId }: DescriptionFormProps) {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  {/* <FormLabel>Course title</FormLabel> */}
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}

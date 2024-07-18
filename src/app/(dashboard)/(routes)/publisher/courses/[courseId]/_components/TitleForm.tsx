@@ -63,7 +63,7 @@ function TitleForm({ initialData, courseId }: TitleFormProps) {
   };
 
   return (
-    <div className="mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="mt-6 bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Course Title
         <Button onClick={toggleEditing} variant="ghost">
@@ -88,7 +88,6 @@ function TitleForm({ initialData, courseId }: TitleFormProps) {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  {/* <FormLabel>Course title</FormLabel> */}
                   <FormControl>
                     <Input
                       disabled={isSubmitting}

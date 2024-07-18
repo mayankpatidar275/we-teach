@@ -21,3 +21,5 @@ Migrating to bcryptjs worked
 todo: remove border in create/edit course cards
 
 todo: error on api requests, like patch to edit description (changing the userId from "1" worked)
+
+todo: add all the microservices repos code and configurations for docker and nginx

@@ -56,7 +56,7 @@ function AttachmentImageForm({ initialData, courseId }: AttachentFormProps) {
   };
 
   return (
-    <div className="mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="mt-6 bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Course attachments
         <Button onClick={toggleEditing} variant="ghost">
@@ -81,7 +81,7 @@ function AttachmentImageForm({ initialData, courseId }: AttachentFormProps) {
               {initialData.attachments.map((attachment) => (
                 <div
                   key={attachment.id}
-                  className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rouded-md"
+                  className="flex items-center p-3 w-full bg-sky-100 border-sky-200 text-sky-700 rouded-md"
                 >
                   <File className="h-4 w-4 mr-2 flex-shrink-0" />
                   <p className="text-xs line-clamp-1">{attachment.name}</p>

@@ -1,7 +1,6 @@
 "use client";
 
 import toast from "react-hot-toast";
-// import { toast } from "sonner";
 import { Button } from "../button";
 import { Input } from "../input";
 import { Label } from "../label";
@@ -26,7 +25,6 @@ const LoginForm = () => {
           if (!!response.error) {
             console.error("response.error is: ", response.error);
             toast.error("Check your credentials");
-            // setError(response.error.message);
           } else {
             router.push("/");
           }

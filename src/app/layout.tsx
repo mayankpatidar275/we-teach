@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ToasterProvider from "@/components/providers/ToasterProvider";
 import ConfettiProvider from "@/components/providers/ConfettiProvider";
-import { Toaster } from "@/components/ui/sonner";
 
 // import { ClerkProvider } from "@clerk/nextjs";
 
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: Readonly<{ 
   children: React.ReactNode;
 }>) {
   return (
@@ -27,7 +26,6 @@ export default function RootLayout({
         <ToasterProvider />
         {children}
       </body>
-      <Toaster />
     </html>
     // </ClerkProvider>
   );
