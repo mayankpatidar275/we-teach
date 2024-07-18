@@ -51,7 +51,7 @@ function ChapterVideoForm({
   };
 
   return (
-    <div className="mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="mt-6 bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Chapter Video
         <Button onClick={toggleEditing} variant="ghost">
@@ -72,7 +72,7 @@ function ChapterVideoForm({
       </div>
       {!isEditing &&
         (!initialData.videoUrl ? (
-          <div className="flex justify-center item-center h-60 rounded-md bg-slate-200">
+          <div className="flex justify-center items-center h-60 rounded-md bg-slate-700">
             <Video className="h-10 w-10 text-slate-500" />
           </div>
         ) : (

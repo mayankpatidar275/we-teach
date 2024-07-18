@@ -16,8 +16,8 @@ export const Preview = ({ value }: PreviewProps) => {
   );
 
   return (
-    <div className="bg-white text-black">
-      <ReactQuill theme="bubble" value={value} readOnly />
-    </div>
+    // <div className="bg-white text-black">
+    <ReactQuill theme="bubble" value={value} readOnly />
+    //  </div>
   );
 };

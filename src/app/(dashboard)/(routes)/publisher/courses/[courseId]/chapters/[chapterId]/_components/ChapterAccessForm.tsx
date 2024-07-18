@@ -73,7 +73,7 @@ function ChapterAccessForm({
   };
 
   return (
-    <div className="mt-6 border bg-slate-700 rounded-md p-4">
+    <div className="mt-6 bg-slate-700 rounded-md p-4">
       <div className="flex items-center justify-between font-medium">
         Chapter access
         <Button onClick={toggleEditing} variant="ghost">
@@ -90,7 +90,7 @@ function ChapterAccessForm({
         <p
           className={cn(
             "text-sm mt-2 ",
-            !initialData.isFree && "text-slate-500 italic"
+            !initialData.isFree && "text-slate-50 italic"
           )}
         >
           {initialData.isFree ? (
@@ -110,7 +110,7 @@ function ChapterAccessForm({
               control={form.control}
               name="isFree"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
@@ -118,7 +118,7 @@ function ChapterAccessForm({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormDescription>
+                    <FormDescription className="text-slate-50">
                       Check this box if you want to make this chapter free for
                       preview
                     </FormDescription>
