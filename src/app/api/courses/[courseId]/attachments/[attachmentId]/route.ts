@@ -11,7 +11,6 @@ export async function DELETE(
   }
 ) {
   try {
-    console.log("params: ", params);
     // const userId = "1";
     const session = await auth();
     const userId = session?.user?.id;

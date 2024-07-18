@@ -27,8 +27,6 @@ const activities = [
   },
 ];
 
-console.log("type of image: ", typeof activities[0]["imageUrl"]);
-
 function FunZonePage() {
   return (
     <>

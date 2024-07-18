@@ -2,7 +2,6 @@ var press_key = document.getElementById("press_key");
 
 function play_drum(event){
     var boom = document.getElementById("boom");
-    console.log("done");
     var x = event.keyCode;
     if(x==97){
         boom.pause();
