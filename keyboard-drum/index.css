@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("drum.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.drum_kit{
+    display: flex;    
+    flex-direction: row;
+    justify-content: center;
+    gap: 11px;
+    margin-top: 90px;
+    color: rgb(255, 255, 255);
+}
+.key {
+    border: turquoise solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 45px;
+    color: white;
+    height: 80px;
+    width: 80px;
+    font-size: x-large;
+    }
+.shadow{
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #c765fe;
+}
+.shadow2{
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #0c037c;
+}
+#A:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #c765fe;
+}
+#S:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #c765fe;
+}
+#D:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #c765fe;
+}
+#F:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #c765fe;
+}
+#G:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #c765fe;
+}
+#H:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #0c037c;
+}
+#J:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #0c037c;
+}
+#K:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #0c037c;
+}
+#L:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #0c037c;
+}
+#L:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.3s;
+    box-shadow: 0 0 15px #0c037c;
+}
+
+#A, #S, #D, #F {
+    border: #5427fe solid 3.5px;
+}
+#G, #H, #J, #K, #L {
+    border: #0c037c solid 3.5px;
+}
+#press_key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 95px;
+    background-color: #020612;
+    outline: none;
+    border: none;
+    color: aliceblue;
+    font-size: large;
+    letter-spacing: 4px;
+}
+input{
+    text-align: center;
+}

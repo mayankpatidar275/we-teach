@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drum-Kit</title>
+  </head>
+  <link rel="stylesheet" href="index.css" />
+  <script src="index.js"></script>
+  <body>
+    <div class="drum_kit">
+      <div class="key" id="A">
+        <span>A</span>
+      </div>
+      <div class="key" id="S">
+        <span>S</span>
+      </div>
+      <div class="key" id="D">
+        <span>D</span>
+      </div>
+      <div class="key" id="F">
+        <span>F</span>
+      </div>
+      <div class="key" id="G">
+        <span>G</span>
+      </div>
+      <div class="key" id="H">
+        <span>H</span>
+      </div>
+      <div class="key" id="J">
+        <span>J</span>
+      </div>
+      <div class="key" id="K">
+        <span>K</span>
+      </div>
+      <div class="key" id="L">
+        <span>L</span>
+      </div>
+    </div>
+
+    <input
+      type="text"
+      id="press_key"
+      onkeypress="play_drum(event)"
+      name="text_area"
+      placeholder="Type here to play"
+      autofocus
+    />
+
+    <audio src="boom.wav" id="boom"></audio>
+    <audio src="clap.wav" id="clap"></audio>
+    <audio src="hihat.wav" id="hihat"></audio>
+    <audio src="kick.wav" id="kick"></audio>
+    <audio src="openhat.wav" id="openhat"></audio>
+    <audio src="ride.wav" id="ride"></audio>
+    <audio src="snare.wav" id="snare"></audio>
+    <audio src="tink.wav" id="tink"></audio>
+    <audio src="tom.wav" id="tom"></audio>
+  </body>
+</html>
