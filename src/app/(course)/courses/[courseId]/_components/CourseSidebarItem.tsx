@@ -56,8 +56,8 @@ const CourseSidebarItem = ({
             isActive && "text-slate-700",
             isCompleted && "text-emerald-700"
           )}
-        > 
-          {label}
+        >
+          {label.length > 15 ? `${label.slice(0, 15)}...` : label}
         </span>
       </div>
       {/* <div
