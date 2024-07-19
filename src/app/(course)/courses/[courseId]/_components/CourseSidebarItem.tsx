@@ -34,11 +34,12 @@ const CourseSidebarItem = ({
       type="button"
       className={cn(
         "flex items-center gap-x-2 text-slate-500 text-sm font-[500] pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20",
-        isActive &&
-          "bg-gray-200 text-black hover:bg-gray-300 hover:text-black  border-r-4 border-sky-600",
+
         isCompleted &&
-          "text-emerald-700 hover:text-emerald-700 border-r-4 border-emerald-700",
-        isCompleted && isActive && "bg-emerald-200/20"
+          "text-emerald-700 hover:text-emerald-700 border-r-4 border-emerald-700 bg-emerald-200",
+        isActive &&
+          "bg-gray-200 text-black hover:bg-gray-300 hover:text-black  border-r-4 border-sky-600"
+        // isCompleted && isActive && "bg-emerald-200/20"
       )}
     >
       <div className="flex items-center gap-x-2 py-4">
