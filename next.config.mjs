@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    domains: ["utfs.io"],
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '**', // Allows all hostnames
+        protocol: "http",
+        hostname: "**", // Allows all hostnames
       },
     ],
   },
@@ -22,8 +23,8 @@ const nextConfig = {
             value: "*", // Allows all origins
           },
           {
-            key: 'X-Forwarded-Host',
-            value: 'localhost', // Should match the value from Nginx
+            key: "X-Forwarded-Host",
+            value: "localhost", // Should match the value from Nginx
           },
         ],
       },

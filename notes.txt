@@ -25,3 +25,7 @@ todo: error on api requests, like patch to edit description (changing the userId
 todo: add all the microservices repos code and configurations for docker and nginx
 
 todo: Internal server error while uploading a chapter (uploadthing middleware error)
+
+todo: Error -> hostname "utfs.io" is not configured under images in your `next.config.js`
+
+todo: use SessionProvider at top level
