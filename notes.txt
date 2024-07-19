@@ -31,3 +31,5 @@ todo: Error -> hostname "utfs.io" is not configured under images in your `next.c
 todo: use SessionProvider at top level
 
 todo: coursesidebar width fix, chapter name lenght truncate if > 15 char, 
+
+todo: inprogress/completed courses not showing correct.

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import CourseSidebarItem from "./CourseSidebarItem";
 import CourseProgress from "@/components/CourseProgress";
 import { auth } from "@/auth";
+import Link from "next/link";
 
 interface CourseSidebarProps {
   course: Course & {
@@ -32,7 +33,9 @@ const CourseSidebar = async ({ course, progressCount }: CourseSidebarProps) => {
   return (
     <div className="h-full flex flex-col w-full md:w-60 overflow-y-auto shadow-lg shadow-slate-700 bg-slate-700">
       <div className="p-8 flex flex-col border-b">
-        <h1 className="font-semibold">{course.title}</h1>
+        <Link href={`/`}>
+          <h1 className="font-semibold">{course.title}</h1>
+        </Link>
         {purchase && (
           <div className="mt-10">
             <CourseProgress variant="default" value={progressCount} />
