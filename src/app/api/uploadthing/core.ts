@@ -2,20 +2,17 @@ import { isPublisher } from "@/lib/publisher";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 import { auth } from "@/auth";
-import { NextApiRequest, NextApiResponse } from "next";
 
 const f = createUploadthing();
 
-const _auth = async (req: any, res: any) => {
-  const session = await auth(req, res);
-  console.log("Session:", session); // Log session details
+const _auth = async () => {
+  const session = await auth();
   return session?.user;
 };
 
-async function handleAuth({ req, res }: any) {
+async function handleAuth() {
   // This code runs on your server before upload
-  const user = await _auth(req, res);
-  console.log("User:", user); // Log user details
+  const user = await _auth();
 
   if (!user) {
     console.error("Unauthorized access attempt"); // Log unauthorized access
@@ -38,8 +35,7 @@ export const ourFileRouter = {
   courseImage: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
     .middleware(async ({ req, res }) => {
       // This code runs on your server before upload
-      const user = await _auth(req, res);
-      console.log("User (courseImage):", user); // Log user details for courseImage
+      const user = await _auth();
 
       // If you throw, the user will not be able to upload
       if (!user) throw new UploadThingError("Unauthorized");
