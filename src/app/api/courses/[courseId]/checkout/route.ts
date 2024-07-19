@@ -1,5 +1,6 @@
 // import {currentUser} from "@clerk/nextjs";
 
+import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
@@ -11,9 +12,12 @@ export async function POST(
 ) {
   try {
     // const user = await currentUser();
-    const user = await "1";
+    // const user = await "1";
+    const session = await auth();
+    const userId = session?.user?.id;
+    const userEmail = session?.user?.email;
     // if (!user || !user.id || !user.emailAddresses?.[0]?.emailAddress)
-    if (!user) {
+    if (!session || !userId || !userEmail) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -27,8 +31,8 @@ export async function POST(
     const purchase = await db.purchase.findUnique({
       where: {
         userId_courseId: {
-          // userId: user.id,
-          userId: "1",
+          userId: userId,
+          // userId: "1",
           courseId: params.courseId,
         },
       },
@@ -58,8 +62,8 @@ export async function POST(
 
     let stripeCustomer = await db.stripeCustomer.findUnique({
       where: {
-        // userId: user.id,
-        userId: "1",
+        userId: userId,
+        // userId: "1",
       },
       select: {
         stripeCustomerId: true,
@@ -69,18 +73,18 @@ export async function POST(
     if (!stripeCustomer) {
       const customer = await stripe.customers.create({
         // email: user.emailAddress[0].emailAddress,
-        email: "mk@gmail.com",
+        email: userEmail,
       });
       stripeCustomer = await db.stripeCustomer.create({
         data: {
-          // userId: user.id,
-          userId: "1",
+          userId: userId,
+          // userId: "1",
           stripeCustomerId: customer.id,
         },
       });
     }
 
-    const session = await stripe.checkout.sessions.create({
+    const stripeSession = await stripe.checkout.sessions.create({
       customer: stripeCustomer.stripeCustomerId,
       line_items,
       mode: "payment",
@@ -88,12 +92,12 @@ export async function POST(
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
       metadata: {
         courseId: course.id,
-        // userId: user.id,      }
-        userId: "1",
+        userId: userId,
+        // userId: "1",
       },
     });
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: stripeSession.url });
   } catch (error) {
     console.log("[COURSE_ID_CHECKOUT]", error);
     return new NextResponse("Internal Error", { status: 500 });
