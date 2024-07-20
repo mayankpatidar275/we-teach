@@ -1,0 +1,64 @@
+version: "3"
+
+services:
+  api-gateway:
+    image: mkpatidar/api-gateway:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - runner-game
+      - keyboard-drum
+      - bubble-game
+      - we-teach
+    networks:
+      - app-network
+
+  runner-game:
+    image: mkpatidar/runner-game:latest
+    expose:
+      - "80"
+    networks:
+      - app-network
+
+  keyboard-drum:
+    image: mkpatidar/keyboard-drum:latest
+    expose:
+      - "80"
+    networks:
+      - app-network
+
+  bubble-game:
+    image: mkpatidar/bubble-game:latest
+    expose:
+      - "80"
+    networks:
+      - app-network
+
+  we-teach:
+    image: mkpatidar/we-teach:latest
+    expose:
+      - "80"
+    networks:
+      - app-network
+    environment:
+      - DATABASE_URL=mysql://avnadmin:AVNS_3nq0SANq86aiJj-Htyv@we-teach-we-teach.f.aivencloud.com:13765/defaultdb?ssl-mode=REQUIRED
+      - UPLOADTHING_SECRET=sk_live_aba5174ed3629765b042b2335e526b982bac2953fb68b3865da914ce340d3a7f
+      - UPLOADTHING_APP_ID=4u43ux1nfu
+      - NEXTAUTH_SECRET=w2m1ty5gsHw7Ho+CRHWW7W5+69JQ0QhtjZ/k4vRmlKQ=
+      - GOOGLE_CLIENT_ID=161609457199-43b189vkp7bcbk4bpjpq6mvg4flv5e0v.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+      - MUX_TOKEN_ID=bc0e8d23-800e-42bc-af83-fa93e23eba19
+      - MUX_TOKEN_SECRET=vZuK1LFzZAZN/MEWqNuRW/8qGT7VW7ESqNOrGDkUW0gVpxsOWBZa77S9ToG2C4Ll8Fr3dS1JSB9
+      - STRIPE_API_KEY=sk_test_51O1oIQSAjQ6IO23pntlMjZTOq8fLizSjUqbu2YdDrQgSGKeespfvgzeU9wytCMciEsExP6DDpbNyWVsMh6fisDpT00ByBm6SO9
+      - NEXT_PUBLIC_APP_URL=http://localhost:80
+      - STRIPE_WEBHOOK_SECRET=whsec_a3728ae977126d9adb92efcdf6b92a4095d585f07eea195f3947bcc11b9b6654
+      - NEXT_PUBLIC_PUBLISHER_ID=1
+      - NEXT_PUBLIC_PUBLISHER_EMAIL=demo@gmail.com
+      - AUTH_TRUST_HOST=true
+      - NEXTAUTH_URL=http://localhost:80
+      - NEXTAUTH_URL_INTERNAL=http://localhost:80
+      - UPLOADTHING_URL=http://localhost:80
+
+networks:
+  app-network:
+    driver: bridge
