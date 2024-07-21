@@ -39,3 +39,5 @@ todo: push the images on docker hub and create compose file on gcp vps to pull a
 todo: uploadthing -> My callback runs in development but not in production 
 
 todo: https -> setup the ssl certificate, nginx configuration changes accordingly.
+
+todo: login/logout rendering issue
