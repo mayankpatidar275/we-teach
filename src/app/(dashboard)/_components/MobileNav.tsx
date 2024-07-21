@@ -12,9 +12,7 @@ function MobileNav() {
         <Menu className="m-3" />
       </SheetTrigger>
       <SheetContent side="left" className="p-0 bg-slate-600 border-0 ">
-        <SessionProvider>
-          <Sidebar />
-        </SessionProvider>
+        <Sidebar />
       </SheetContent>
     </Sheet>
   );

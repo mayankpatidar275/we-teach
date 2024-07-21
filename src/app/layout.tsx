@@ -25,7 +25,12 @@ export default function RootLayout({
       <body className={`${inter.className} bg-gray-600 text-white`}>
         <ConfettiProvider />
         <ToasterProvider />
-        <SessionProvider>{children}</SessionProvider>{" "}
+        <SessionProvider
+          // Re-fetches session when window is focused
+          refetchOnWindowFocus={true}
+        >
+          {children}
+        </SessionProvider>
       </body>
     </html>
     // </ClerkProvider>
