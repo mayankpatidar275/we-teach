@@ -8,10 +8,14 @@ import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-// import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 function Sidebar(): React.ReactNode {
-  const session = useSession();
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return null;
+  }
+
   return (
     <div
       className={
@@ -25,7 +29,7 @@ function Sidebar(): React.ReactNode {
         <SidebarList />
       </div>
       <nav className={cn("block text-end p-5 mt-auto")}>
-        {session?.data?.user?.id ? (
+        {session?.user?.id ? (
           <Button onClick={() => signOut()} variant="default">
             Logout
           </Button>
@@ -34,13 +38,6 @@ function Sidebar(): React.ReactNode {
             <Button variant="secondary">Login</Button>
           </Link>
         )}
-
-        {/* <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn> */}
       </nav>
     </div>
   );

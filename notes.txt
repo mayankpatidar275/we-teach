@@ -37,3 +37,5 @@ todo: inprogress/completed courses not showing correct.
 todo: push the images on docker hub and create compose file on gcp vps to pull and run (change nginx config accordingly i.e localhost to domain name or ip)
 
 todo: uploadthing -> My callback runs in development but not in production 
+
+todo: https -> setup the ssl certificate, nginx configuration changes accordingly.
