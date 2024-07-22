@@ -4,6 +4,7 @@ import { LayoutDashboard, Navigation, Settings2 } from "lucide-react";
 import React from "react";
 import SidebarItem from "./SidebarItem";
 import { usePathname } from "next/navigation";
+import { SessionProvider } from "next-auth/react";
 
 const playerRoutes = [
   {
@@ -48,11 +49,13 @@ function SidebarList(): React.ReactNode {
     : playerRoutes;
 
   return (
-    <div>
-      {routes.map((item) => (
-        <SidebarItem key={item.label} {...item} />
-      ))}
-    </div>
+    <SessionProvider>
+      <div>
+        {routes.map((item) => (
+          <SidebarItem key={item.label} {...item} />
+        ))}
+      </div>
+    </SessionProvider>
   );
 }
 

@@ -4,15 +4,14 @@ import React from "react";
 import Logo from "./Logo";
 import SidebarList from "./SidebarList";
 import { cn } from "@/lib/utils";
-import { useSession } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
+import LoginLogoutBtn from "./LoginLogoutBtn";
 
 function Sidebar(): React.ReactNode {
-  const { data: session, status } = useSession();
-
   return (
     <div
       className={
@@ -25,21 +24,29 @@ function Sidebar(): React.ReactNode {
       <div>
         <SidebarList />
       </div>
-      <nav className={cn("block text-end p-5 mt-auto")}>
+      <SessionProvider
+        // Re-fetches session when window is focused
+        refetchOnWindowFocus={true}
+      >
+        <LoginLogoutBtn />
+      </SessionProvider>
+      {/* <nav className={cn("block text-end p-5 mt-auto")}>
         {status === "loading" ? (
           <div className="flex items-center justify-end p-3">
             <Loader2 className="h-6 w-6 animate-spin text-secondary" />
           </div>
-        ) : session?.user?.id ? (
+        ) : status === "authenticated" ? (
           <Button onClick={() => signOut()} variant="default">
             Logout
           </Button>
-        ) : (
+        ) : status === "unauthenticated" ? (
           <Link href="/sign-in">
             <Button variant="secondary">Login</Button>
           </Link>
+        ) : (
+          ""
         )}
-      </nav>
+      </nav> */}
     </div>
   );
 }

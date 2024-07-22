@@ -1,6 +1,7 @@
 import NavbarRoutes from "@/components/NavbarRoutes";
 import { Chapter, Course, UserProgress } from "@prisma/client";
 import CourseMobileSidebar from "./CourseMobileSidebar";
+import { SessionProvider } from "next-auth/react";
 
 interface CourseNavbarProps {
   course: Course & {
@@ -13,10 +14,12 @@ interface CourseNavbarProps {
 
 const CourseNavbar = ({ course, progressCount }: CourseNavbarProps) => {
   return (
-    <div className="p-4 h-full flex items-center bg-slate-800 shadow-sm">
-      <CourseMobileSidebar course={course} progressCount={progressCount} />
-      <NavbarRoutes />
-    </div>
+    <SessionProvider>
+      <div className="p-4 h-full flex items-center bg-slate-800 shadow-sm">
+        <CourseMobileSidebar course={course} progressCount={progressCount} />
+        <NavbarRoutes />
+      </div>
+    </SessionProvider>
   );
 };
 

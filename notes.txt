@@ -41,3 +41,6 @@ todo: uploadthing -> My callback runs in development but not in production
 todo: https -> setup the ssl certificate, nginx configuration changes accordingly.
 
 todo: login/logout rendering issue
+
+todo: mux video player issue
+
