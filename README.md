@@ -82,6 +82,48 @@ FunZone is a dedicated section for interactive games, implemented as separate mi
    npm run dev
    ```
 
+## Build and Push Docker Images
+
+1. **Build the images:**
+
+   ```bash
+   docker-compose build
+   ```
+
+2. **Tag and push the we-teach_we-teach image:**
+
+   ```bash
+   docker tag we-teach_we-teach:latest mkpatidar/we-teach:latest
+   docker push mkpatidar/we-teach:latest
+   ```
+
+3. **Tag and push the we-teach_keyboard-drum image:**
+
+   ```bash
+   docker tag we-teach_keyboard-drum:latest mkpatidar/keyboard-drum:latest
+   docker push mkpatidar/keyboard-drum:latest
+   ```
+
+4. **Tag and push the we-teach_bubble-game image:**
+
+   ```bash
+   docker tag we-teach_bubble-game:latest mkpatidar/bubble-game:latest
+   docker push mkpatidar/bubble-game:latest
+   ```
+
+5. **Tag and push the we-teach_runner-game image:**
+
+   ```bash
+   docker tag we-teach_runner-game:latest mkpatidar/runner-game:latest
+   docker push mkpatidar/runner-game:latest
+   ```
+
+6. **Tag and push the we-teach_api-gateway image:**
+   ```bash
+   docker tag we-teach_api-gateway:latest mkpatidar/api-gateway:latest
+   docker push mkpatidar/api-gateway:latest
+   ```
+
 ## Contributing
 
 We welcome contributions! Please fork the repository and create a pull request with your changes.
