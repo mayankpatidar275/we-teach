@@ -1,4 +1,4 @@
-# WeTeach - June 2024
+# WeTeach
 
 ## About
 

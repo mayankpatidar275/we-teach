@@ -98,10 +98,12 @@ export async function PATCH(
     const session = await auth();
     const userId = session?.user?.id;
     const { isPublished, ...values } = await req.json();
-
+    
     if (!userId) {
+      console.log("Unauthorized: No user ID found");
       return new NextResponse("Unauthorized", { status: 401 });
     }
+
     const courseOwner = await db.course.findUnique({
       where: {
         id: params.courseId,
@@ -109,12 +111,26 @@ export async function PATCH(
       },
     });
     if (!courseOwner) {
+      console.log("Unauthorized: Course owner not found");
       return new NextResponse("Unauthorized", { status: 401 });
     }
-    const chapter = await db.chapter.update({
+
+    const chapter = await db.chapter.findUnique({
       where: {
         id: params.chapterId,
         courseId: params.courseId,
+      },
+    });
+    console.log("Chapter found:", chapter);
+
+    if (!chapter) {
+      console.log("Not Found: Chapter not found");
+      return new NextResponse("Not Found", { status: 404 });
+    }
+
+    const updatedChapter = await db.chapter.update({
+      where: {
+        id: params.chapterId,
       },
       data: {
         ...values,
@@ -130,7 +146,24 @@ export async function PATCH(
       });
 
       if (existingMuxData) {
-        await video.assets.delete(existingMuxData.assetId);
+        try {
+          // Check if the asset exists before deleting
+          const asset = await video.assets.retrieve(existingMuxData.assetId);
+          if (asset) {
+            console.log("Deleting existing Mux data:", existingMuxData.assetId);
+            await video.assets.delete(existingMuxData.assetId);
+            
+          } else {
+            console.log("Mux asset not found, skipping deletion.");
+          }
+        } catch (muxError) {
+          console.log("Error checking/deleting Mux asset:", muxError);
+          // if (muxError.status !== 404) {
+          //   throw muxError; // rethrow if it's not a 404 error
+          // } else {
+          //   console.log("Mux asset not found, continuing with update.");
+          // }
+        }
         await db.muxData.delete({
           where: {
             id: existingMuxData.id,
@@ -153,7 +186,7 @@ export async function PATCH(
       });
     }
 
-    return NextResponse.json(chapter);
+    return NextResponse.json(updatedChapter);
   } catch (error) {
     console.log("[COURSES_CHAPTER_ID]", error);
     return new NextResponse("Internal error ", { status: 500 });

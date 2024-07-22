@@ -85,3 +85,5 @@ todo: change the favicon
 
 todo: issue in uploading chapter video (image working) -> in production
 
+todo: error onSubmit after video upload -> solution: check if the video already exists on uploadthing (await video.assets.retrieve(existingMuxData.assetId);)
+
