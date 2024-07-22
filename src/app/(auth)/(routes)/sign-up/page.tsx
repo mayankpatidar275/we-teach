@@ -28,13 +28,13 @@ const SignupPage = async () => {
           <SignupForm />
         </CardContent>
         <CardFooter className="flex justify-between flex-col gap-4">
-          <span>or</span>
+          {/* <span>or</span>
 
           <form action="">
             <Button type="submit" variant="outline">
               Login with google
             </Button>
-          </form>
+          </form> */}
 
           <Link href="/sign-in">Already have an account? Login</Link>
         </CardFooter>

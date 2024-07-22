@@ -35,7 +35,12 @@ const LoginForm = () => {
       <div className="grid w-full items-center gap-4">
         <div className="flex flex-col space-y-1.5">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" name="password" placeholder="demo" />
+          <Input
+            id="password"
+            name="password"
+            placeholder="demo"
+            defaultValue="demo"
+          />
         </div>
         <div className="flex flex-col space-y-1.5">
           <Label htmlFor="email">Email</Label>
@@ -44,6 +49,7 @@ const LoginForm = () => {
             name="email"
             id="email"
             placeholder="demo@gmail.com"
+            defaultValue="demo@gmail.com"
           />
         </div>
         <div className="flex flex-col space-y-1.5">
