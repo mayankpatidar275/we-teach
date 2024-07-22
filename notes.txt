@@ -44,3 +44,7 @@ todo: login/logout rendering issue
 
 todo: mux video player issue
 
+todo: stripe redirect to localhost:3000 issue
+
+todo: change the favicon
+

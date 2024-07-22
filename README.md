@@ -35,6 +35,10 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+# Build the images
+
+docker compose build
+
 # Tag and push the we-teach_we-teach image
 
 docker tag we-teach_we-teach:latest mkpatidar/we-teach:latest

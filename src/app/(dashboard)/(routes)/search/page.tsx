@@ -34,7 +34,7 @@ async function SearchPage({ searchParams }: SearchPageProps) {
     ...searchParams,
   });
 
-  console.log("courses: ", courses);
+  // console.log("courses: ", courses);
   return (
     <Suspense
       fallback={
