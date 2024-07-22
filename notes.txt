@@ -42,9 +42,11 @@ todo: https -> setup the ssl certificate, nginx configuration changes accordingl
 
 todo: login/logout rendering issue
 
-todo: mux video player issue
+todo: mux video player issue (only for some resources) (reason could be resource not found on uploadthing)
 
 todo: stripe redirect to localhost:3000 issue
 
 todo: change the favicon
+
+todo: issue in uploading chapter video (image working) -> in production
 
