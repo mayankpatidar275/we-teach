@@ -87,7 +87,7 @@ FunZone is a dedicated section for interactive games, implemented as separate mi
 1. **Build the images:**
 
    ```bash
-   docker-compose build
+   docker compose build
    ```
 
 2. **Tag and push the we-teach_we-teach image:**
