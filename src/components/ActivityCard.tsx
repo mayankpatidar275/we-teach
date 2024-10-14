@@ -10,11 +10,23 @@ interface AcitivityCardProps {
   title: string;
   imageUrl: StaticImageData;
   category: string;
+  activityUrl: string;
 }
 
-const ActivityCard = ({ id, title, imageUrl }: AcitivityCardProps) => {
+const ActivityCard = ({
+  id,
+  title,
+  imageUrl,
+  activityUrl,
+}: AcitivityCardProps) => {
   return (
-    <Link href={`/funzone/${id}`}>
+    <Link
+      href={
+        process.env.NEXT_PUBLIC_PLATFORM === "vps"
+          ? `/funzone/${id}`
+          : activityUrl
+      }
+    >
       <div className="group hover:shadow-sm transition overflow-hidden rounded-lg p-3 h-full bg-slate-700">
         <div className="relative w-full aspect-video rounded-md overflow-hidden">
           <Image fill className="object-cover" alt={title} src={imageUrl} />

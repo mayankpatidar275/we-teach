@@ -6,6 +6,7 @@ type Activity = {
   title: string;
   imageUrl: StaticImageData;
   category: string;
+  activityUrl: string;
 };
 
 interface ActivitiesListProps {
@@ -25,6 +26,7 @@ const ActivitiesList = ({ items }: ActivitiesListProps) => {
             title={item.title}
             imageUrl={item.imageUrl!}
             category={item?.category!}
+            activityUrl={item?.activityUrl}
           />
         ))}
       </div>

@@ -12,18 +12,21 @@ const activities = [
     title: "Jump obstacles",
     imageUrl: jumpObstacles,
     category: "game",
+    activityUrl: "https://runner-game-mkpatidar.netlify.app/",
   },
   {
     id: "2",
     title: "Keyboard drum",
     imageUrl: keyboardDrum,
     category: "music",
+    activityUrl: "https://keyboard-drum-mkpatidar.netlify.app/",
   },
   {
     id: "3",
     title: "Bubble game",
     imageUrl: bubbleGame,
     category: "game",
+    activityUrl: "https://bubble-game-mkpatidar.netlify.app/",
   },
 ];
 
