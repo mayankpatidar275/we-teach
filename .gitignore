@@ -32,6 +32,7 @@ docker.env
 
 # vercel
 .vercel
+vercel-production.env
 
 # typescript
 *.tsbuildinfo
