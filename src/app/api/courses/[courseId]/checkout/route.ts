@@ -90,8 +90,14 @@ export async function POST(
       mode: "payment",
       // success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?success=1`,
       // cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
-      success_url: `https://we-teach.mkpatidar.in/courses/${course.id}?success=1`,
-      cancel_url: `https://we-teach.mkpatidar.in/courses/${course.id}?canceled=1`,
+      success_url:
+        process.env.NEXT_PUBLIC_PLATFORM === "vps"
+          ? `https://we-teach.mkpatidar.in/courses/${course.id}?success=1`
+          : `https://we-teach.vercel.app/courses/${course.id}?success=1`,
+      cancel_url:
+        process.env.NEXT_PUBLIC_PLATFORM === "vps"
+          ? `https://we-teach.mkpatidar.in/courses/${course.id}?canceled=1`
+          : `https://we-teach.vercel.app/courses/${course.id}?canceled=1`,
       metadata: {
         courseId: course.id,
         userId: userId,
