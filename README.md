@@ -14,6 +14,50 @@ WeTeach is a comprehensive online learning and fun platform. The platform includ
 - **Media Management**: Supports attachments and HLS playback for video content using Mux.
 - **Analytics**: Created dashboards and course analytics for publishers.
 
+## Project Screenshots
+
+Here are some screenshots showcasing different features of the WeTeach platform:
+
+### Browse
+
+![Browse](public/demo-assets/browse.png)
+
+### Course Setup
+
+![Course Setup](public/demo-assets/course-setup.png)
+
+### Courses
+
+![Courses](public/demo-assets/courses.png)
+
+### Dashboard
+
+![Dashboard](public/demo-assets/dashboard.png)
+
+### Chapters
+
+![Chapters](public/demo-assets/chapters.png)
+
+### Analytics
+
+![Analytics](public/demo-assets/analytics.png)
+
+### Fun Zone
+
+![Fun Zone](public/demo-assets/fun-zone.png)
+
+### Runner Game
+
+![Runner Game](public/demo-assets/runner-game.png)
+
+### Stripe Payment
+
+![Stripe Payment](public/demo-assets/stripe-payment.png)
+
+### Authentication
+
+![Stripe Payment](public/demo-assets/login.png)
+
 ## FunZone
 
 FunZone is a dedicated section for interactive games, implemented as separate microservices and served by an Nginx reverse proxy. The games included are:
@@ -68,6 +112,7 @@ FunZone is a dedicated section for interactive games, implemented as separate mi
      AUTH_TRUST_HOST=
      NEXTAUTH_URL=
      NEXTAUTH_URL_INTERNAL=
+     NEXT_PUBLIC_PLATFORM=vps
      ```
 
 3. **Docker Setup if you want to containerize teh app (Optional):**
